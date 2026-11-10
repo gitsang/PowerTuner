@@ -1,7 +1,7 @@
 using System;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Threading;
+using PowerTuner.Services;
 
 namespace PowerTuner
 {
@@ -11,9 +11,23 @@ namespace PowerTuner
         {
             base.OnStartup(e);
 
-            // 未捕获异常统一记录，避免静默退出
             DispatcherUnhandledException += OnDispatcherUnhandledException;
             AppDomain.CurrentDomain.UnhandledException += OnDomainUnhandledException;
+
+            // 提权模式：只做解锁然后退出，不显示界面
+            if (e.Args != null && Array.IndexOf(e.Args, "--unhide") >= 0)
+            {
+                int count = 0;
+                try { count = HiddenSettings.Unhide(); }
+                catch { Shutdown(2); return; }
+
+                Shutdown(0);
+                return;
+            }
+
+            MainWindow window = new MainWindow();
+            MainWindow = window;
+            window.Show();
         }
 
         private static void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
