@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.Win32;
+using PowerTuner.Models;
 
 namespace PowerTuner.Models
 {
