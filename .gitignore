@@ -1,0 +1,24 @@
+# 构建产物
+/dist/
+/bin/
+/obj/
+src/**/bin/
+src/**/obj/
+*.exe
+*.pdb
+
+# 运行时状态（每台机器不同，不应入库）
+PowerTuner.log
+unhide.result.txt
+unhide.stuck.txt
+
+# 图标校验产物
+preview-*.png
+icon-preview.png
+
+# 编辑器 / 系统
+.vs/
+.vscode/
+*.user
+Thumbs.db
+desktop.ini

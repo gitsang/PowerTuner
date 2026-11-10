@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <LangVersion>latest</LangVersion>
+
+    <AssemblyName>PowerTuner</AssemblyName>
+    <RootNamespace>PowerTuner</RootNamespace>
+    <ApplicationIcon>assets\app.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+
+    <!-- 版本信息 -->
+    <Version>0.1.0</Version>
+    <Company>PowerTuner</Company>
+    <Product>PowerTuner</Product>
+    <Description>Windows 电源策略管理器</Description>
+    <Copyright>MIT License</Copyright>
+
+    <Deterministic>true</Deterministic>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+  </PropertyGroup>
+
+</Project>
