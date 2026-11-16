@@ -10,7 +10,8 @@ echo.
 where dotnet >nul 2>nul
 if errorlevel 1 goto nodotnet
 
-dotnet build src\PowerTuner\PowerTuner.csproj -c Release -o dist
+rem 多目标工程：发布固定用 net48（体积小、免装运行时）
+dotnet build src\PowerTuner\PowerTuner.csproj -c Release -f net48 -o dist
 if errorlevel 1 goto buildfail
 
 echo.

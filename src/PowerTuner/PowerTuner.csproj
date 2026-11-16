@@ -2,7 +2,9 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net48</TargetFramework>
+    <!-- 发布以 net48 为准（体积小、Win10/11 免装运行时）；
+         net8.0-windows 同时编译，用于验证代码可移植性 -->
+    <TargetFrameworks>net48;net8.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
     <LangVersion>latest</LangVersion>
 
@@ -21,5 +23,10 @@
     <Deterministic>true</Deterministic>
     <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
   </PropertyGroup>
+
+  <!-- .NET 8 下 GBK/OEM 代码页需要显式注册编码提供程序 -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0-windows'">
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
+  </ItemGroup>
 
 </Project>

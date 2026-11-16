@@ -122,6 +122,15 @@ namespace PowerTuner.Services
         private static Encoding _outputEncoding;
         private static readonly object EncLock = new object();
 
+        static PowerCfgService()
+        {
+#if NET
+            // .NET 8 默认不包含 GBK(936) 等代码页，必须显式注册
+            try { Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance); }
+            catch { }
+#endif
+        }
+
         private static Encoding OutputEncoding
         {
             get
